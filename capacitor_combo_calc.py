@@ -5,12 +5,19 @@ from component_formatting import format_capacitor, to_picos
 C_KIT = {100e-12: 2, 1e-9: 2, 4.7e-9: 2, 10e-9: 2, 33e-9: 2, 
           47e-9: 2, 100e-9: 2, 220e-9: 2, 470e-9: 2, 10e-6: 4}
 
+
+"""
+My personal kit
+{10e-12: 21, 22e-12: 14, 47e-12: 14, 100e-12: 21, 220e-12: 14, 470e-12: 14, 1e-9: 21, 22e-9: 14,
+         4.7e-9: 14, 10e-9: 21, 22e-9: 14, 47e-9: 14, 100e-9: 21, 220e-9: 7}
+"""
+
 c_vals = []
 for (val, amt) in C_KIT.items():
     c_vals.extend([val] * amt)
 
-c_2combos = list(combinations(c_vals, 2))
-c_3combos = list(combinations(c_vals, 3))
+c_2combos = set(combinations(c_vals, 2))
+c_3combos = set(combinations(c_vals, 3))
 
 
 def series(*caps):
@@ -44,8 +51,8 @@ for c1, c2 in c_2combos:
     c1_str = format_capacitor(c1)
     c2_str = format_capacitor(c2)
 
-    set_if_absent(all_values, to_picos(c1 + c2), f"{c1_str} + {c2_str}")
-    set_if_absent(all_values, to_picos(series(c1, c2)), f"{c1_str} || {c2_str}")
+    set_if_absent(all_values, to_picos(c1 + c2), f"{c1_str} || {c2_str}")
+    set_if_absent(all_values, to_picos(series(c1, c2)), f"{c1_str} + {c2_str}")
 
     num_computed += 1
     print(f"{100*num_computed/num_combos:.2f}% complete")

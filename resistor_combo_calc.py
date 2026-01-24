@@ -10,8 +10,8 @@ r_vals = []
 for (val, amt) in R_KIT.items():
     r_vals.extend([val] * amt)
 
-r_2combos = list(combinations(r_vals, 2))
-r_3combos = list(combinations(r_vals, 3))
+r_2combos = set(combinations(r_vals, 2))
+r_3combos = set(combinations(r_vals, 3))
 
 
 def parallel(*resistors):
