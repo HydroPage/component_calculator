@@ -36,7 +36,7 @@ for c in c_vals:
 
 all_values_sorted = {key: all_values[key] for key in sorted(all_values)}
 
-with open("my_capacitor_db_singles.json", "w") as f:
+with open("combinations/my_capacitor_db_singles.json", "w") as f:
     json.dump(all_values_sorted, f, indent=1)
 
 
@@ -52,7 +52,7 @@ for c1, c2 in c_2combos:
 
 all_values_sorted = {key: all_values[key] for key in sorted(all_values)}
 
-with open("my_capacitor_db_2combos.json", "w") as f:
+with open("combinations/my_capacitor_db_2combos.json", "w") as f:
     json.dump(all_values_sorted, f, indent=1)
 
 
@@ -83,5 +83,5 @@ for c1, c2, c3 in c_3combos:
 
 all_values_sorted = {key: all_values[key] for key in sorted(all_values)}
 
-with open("my_capacitor_db_3combos.json", "w") as f:
+with open("combinations/my_capacitor_db_3combos.json", "w") as f:
     json.dump(all_values_sorted, f, indent=1)

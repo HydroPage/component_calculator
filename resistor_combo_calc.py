@@ -34,7 +34,7 @@ for r in r_vals:
 
 all_values_sorted = {round(key): all_values[key] for key in sorted(all_values)}
 
-with open("my_resistor_db_singles.json", "w") as f:
+with open("combinations/my_resistor_db_singles.json", "w") as f:
     json.dump(all_values_sorted, f, indent=1)
 
 
@@ -47,7 +47,7 @@ for r1, r2 in r_2combos:
 
 all_values_sorted = {round(key): all_values[key] for key in sorted(all_values)}
 
-with open("my_resistor_db_2combos.json", "w") as f:
+with open("combinations/my_resistor_db_2combos.json", "w") as f:
     json.dump(all_values_sorted, f, indent=1)
 
 
@@ -77,5 +77,5 @@ for r1, r2, r3 in r_3combos:
 
 all_values_sorted = {round(key): all_values[key] for key in sorted(all_values)}
 
-with open("my_resistor_db_3combos.json", "w") as f:
+with open("combinations/my_resistor_db_3combos.json", "w") as f:
     json.dump(all_values_sorted, f, indent=1)
