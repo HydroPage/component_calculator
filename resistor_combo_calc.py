@@ -60,9 +60,9 @@ for r1, r2, r3 in r_3combos:
     set_if_absent(all_values, round(r1 + r2 + r3), f"{r1_str} + {r2_str} + {r3_str}")
 
     # One series two parallel
-    set_if_absent(all_values, round(r1 + parallel(r1, r2)), f"{r1_str} + {r2_str} || {r3_str}")
-    set_if_absent(all_values, round(r2 + parallel(r1, r3)), f"{r2_str} + {r1_str} || {r3_str}")
-    set_if_absent(all_values, round(r3 + parallel(r2, r3)), f"{r3_str} + {r1_str} || {r2_str}")
+    set_if_absent(all_values, round(r1 + parallel(r2, r3)), f"{r1_str} + ({r2_str} || {r3_str})")
+    set_if_absent(all_values, round(r2 + parallel(r1, r3)), f"{r2_str} + ({r1_str} || {r3_str})")
+    set_if_absent(all_values, round(r3 + parallel(r1, r2)), f"{r3_str} + ({r1_str} || {r2_str})")
 
     # One parallel two series
     set_if_absent(all_values, round(parallel(r1, r2 + r3)), f"{r1_str} || ({r2_str} + {r3_str})")

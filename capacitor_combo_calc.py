@@ -75,9 +75,9 @@ for c1, c2, c3 in c_3combos:
     set_if_absent(all_values, to_picos(c1 + c2 + c3), f"{c1_str} || {c2_str} || {c3_str}")
 
     # One parallel two series
-    set_if_absent(all_values, to_picos(c1 + series(c1, c2)), f"{c1_str} || {c2_str} + {c3_str}")
-    set_if_absent(all_values, to_picos(c2 + series(c1, c3)), f"{c2_str} || {c1_str} + {c3_str}")
-    set_if_absent(all_values, to_picos(c3 + series(c2, c3)), f"{c3_str} || {c1_str} + {c2_str}")
+    set_if_absent(all_values, to_picos(c1 + series(c2, c3)), f"{c1_str} || ({c2_str} + {c3_str})")
+    set_if_absent(all_values, to_picos(c2 + series(c1, c3)), f"{c2_str} || ({c1_str} + {c3_str})")
+    set_if_absent(all_values, to_picos(c3 + series(c1, c2)), f"{c3_str} || ({c1_str} + {c2_str})")
 
     # One series two parallel
     set_if_absent(all_values, to_picos(series(c1, c2 + c3)), f"{c1_str} + ({c2_str} || {c3_str})")
