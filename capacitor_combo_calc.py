@@ -2,14 +2,17 @@ from itertools import combinations
 import json
 from component_formatting import format_capacitor, to_picos
 
+
+# ECEN 325 capacitor kit
 C_KIT = {100e-12: 2, 1e-9: 2, 4.7e-9: 2, 10e-9: 2, 33e-9: 2, 
           47e-9: 2, 100e-9: 2, 220e-9: 2, 470e-9: 2, 10e-6: 4}
 
 
 """
-My personal kit
-{10e-12: 21, 22e-12: 14, 47e-12: 14, 100e-12: 21, 220e-12: 14, 470e-12: 14, 1e-9: 21, 22e-9: 14,
-         4.7e-9: 14, 10e-9: 21, 22e-9: 14, 47e-9: 14, 100e-9: 21, 220e-9: 7}
+My personal kit (excluding resistors with really bad frequency response: 220p, 4.7n, 22n)
+
+{10e-12: 21, 22e-12: 14, 47e-12: 14, 100e-12: 21, 470e-12: 14, 1e-9: 21, 2.2e-9: 14,
+         10e-9: 21, 100e-9: 21, 220e-9: 7}
 """
 
 c_vals = []
