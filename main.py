@@ -83,9 +83,9 @@ def main():
                 print(f"{label} = {formatted}: {assembly}")
             
             print(f"Elapsed time: {elapsed_s_fmt}")
-
-print()
-print("Optimal solution found.")
+    
+    print()
+    print("Optimal solution found.")
 
 if __name__ == "__main__":
     main()
