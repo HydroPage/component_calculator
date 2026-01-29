@@ -6,14 +6,14 @@ from component_formatting import format_resistor, format_capacitor
 
 
 components = [
-    {"label": "R3", "type": "R", "max_parts": 2},
-    {"label": "C2", "type": "C", "max_parts": 2},
-    {"label": "C3", "type": "C", "max_parts": 2},
+    {"label": "R1", "type": "R", "max_parts": 1},
+    {"label": "R2", "type": "R", "max_parts": 1},
+    {"label": "C1", "type": "C", "max_parts": 3},
 ]
 
 equations = [
-    {"lhs": lambda r3, c2, c3: c2/(c2+c3), "rhs": 0.6},
-    {"lhs": lambda r3, c2, c3: 1/(r3*(c2+c3)), "rhs": 2*pi*4000},
+    {"lhs": lambda r1, r2, c1: r2/(r1+r2), "rhs": 0.6},
+    {"lhs": lambda r1, r2, c1: (r1+r2)/(r1*r2*c1), "rhs": 2*pi*4000},
 ]
 
 
@@ -84,6 +84,8 @@ def main():
             
             print(f"Elapsed time: {elapsed_s_fmt}")
 
+print()
+print("Optimal solution found.")
 
 if __name__ == "__main__":
     main()
