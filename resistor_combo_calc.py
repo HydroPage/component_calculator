@@ -34,7 +34,7 @@ for r in r_vals:
 
 all_values_sorted = {round(key): all_values[key] for key in sorted(all_values)}
 
-with open("combinations/my_resistor_db_singles.json", "w") as f:
+with open("combinations/my_resistor_db_1combos.json", "w") as f:
     json.dump(all_values_sorted, f, indent=1)
 
 
