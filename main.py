@@ -30,7 +30,7 @@ def main():
     components = []
     equations = []
 
-    with open("test.json", "r") as scenario_file:
+    with open("config.json", "r") as scenario_file:
         data = json.load(scenario_file)
         components = data["components"]
 
