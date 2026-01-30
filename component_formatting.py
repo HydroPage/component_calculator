@@ -56,7 +56,8 @@ def format_capacitor(value):
     Handles up to about 1 millifarad.
     """
     # Convert to integer picofarads (pF)
-    pf = to_picos(value)
+    # pf = to_picos(value)
+    pf = value
 
     if pf < 1000:
         # <1000 pF: just show pF
