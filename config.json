@@ -1,0 +1,30 @@
+{
+    "components": [
+        {
+            "label": "R1",
+            "type": "R",
+            "max_parts": 1
+        },
+        {
+            "label": "R2",
+            "type": "R",
+            "max_parts": 1
+        },
+        {
+            "label": "C1",
+            "type": "C",
+            "max_parts": 3
+        }
+    ],
+
+    "equations": [
+        {
+            "lhs": "R2 / (R1 + R2)",
+            "rhs": "0.6"
+        },
+        {
+            "lhs": "(R1 + R2) / (R1*R2*C1)",
+            "rhs": "2*pi*4000"
+        }
+    ]
+}

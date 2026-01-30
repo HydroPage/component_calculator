@@ -5,18 +5,6 @@ from itertools import product
 from component_formatting import format_resistor, format_capacitor
 
 
-components = [
-    {"label": "R1", "type": "R", "max_parts": 1},
-    {"label": "R2", "type": "R", "max_parts": 1},
-    {"label": "C1", "type": "C", "max_parts": 3},
-]
-
-equations = [
-    {"lhs": lambda r1, r2, c1: r2/(r1+r2), "rhs": 0.6},
-    {"lhs": lambda r1, r2, c1: (r1+r2)/(r1*r2*c1), "rhs": 2*pi*4000}
-]
-
-
 def load_db(comp_type, max_parts):
     fname = f"my_{'resistor' if comp_type=='R' else 'capacitor'}_db_{max_parts}combos.json"
     with open(f"combinations/{fname}", "r") as f:
@@ -25,13 +13,33 @@ def load_db(comp_type, max_parts):
     return {int(key): val for key, val in vals.items()}
 
 
+def format_commas(*args):
+    out = str(args[0])
+    for i in range(len(args) - 1):
+        out += ", " + str(args[i + 1])
+    
+    return out
+
+
 all_r_combos = load_db("R", 3)
 all_c_combos = load_db("C", 3)
 
-r_vals = load_db(comp_type = "R", max_parts = 2).keys()
-c_vals = load_db(comp_type = "C", max_parts = 2).keys()
 
 def main():
+
+    components = []
+    equations = []
+
+    with open("test.json", "r") as scenario_file:
+        data = json.load(scenario_file)
+        components = data["components"]
+
+        part_names = [c["label"] for c in components]
+        for eq in data["equations"]:
+            lhs = eval(f"lambda {format_commas(*part_names)}: {eq['lhs']}")
+            rhs = float(eval(eq["rhs"]))
+            equations.append({"lhs": lhs, "rhs": rhs})
+
     min_err_square = 999999999
     start_time_s = time()
 
