@@ -13,7 +13,7 @@ components = [
 
 equations = [
     {"lhs": lambda r1, r2, c1: r2/(r1+r2), "rhs": 0.6},
-    {"lhs": lambda r1, r2, c1: (r1+r2)/(r1*r2*c1), "rhs": 2*pi*4000},
+    {"lhs": lambda r1, r2, c1: (r1+r2)/(r1*r2*c1), "rhs": 2*pi*4000}
 ]
 
 
