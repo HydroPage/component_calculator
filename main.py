@@ -68,7 +68,10 @@ def main():
             for index, component_value in enumerate(combination):
                 data = components[index]
                 label = data["label"]
-                formatted = format_resistor(component_value) if data["type"] == "R" else format_capacitor(component_value)
+
+                # WARNING, this is hotfixed, examine this closer later, we shouldn't need to do 1e-12 here
+                formatted = format_resistor(component_value) if data["type"] == "R" else format_capacitor(component_value * 1e-12)
+                
                 assembly = all_r_combos[component_value] if data["type"] == "R" else all_c_combos[component_value]
 
                 print(f"{label} = {formatted}: {assembly}")
