@@ -1,7 +1,9 @@
-from math import pi
-from time import time, strftime, gmtime
+from math import *
+
 import json
+from time import time, strftime, gmtime
 from itertools import product
+from config_parse import parse_config_file
 from component_formatting import format_resistor, format_capacitor
 
 
@@ -13,32 +15,13 @@ def load_db(comp_type, max_parts):
     return {int(key): val for key, val in vals.items()}
 
 
-def format_commas(*args):
-    out = str(args[0])
-    for i in range(len(args) - 1):
-        out += ", " + str(args[i + 1])
-    
-    return out
-
-
 all_r_combos = load_db("R", 3)
 all_c_combos = load_db("C", 3)
 
 
 def main():
 
-    components = []
-    equations = []
-
-    with open("config.json", "r") as scenario_file:
-        data = json.load(scenario_file)
-        components = data["components"]
-
-        part_names = [c["label"] for c in components]
-        for eq in data["equations"]:
-            lhs = eval(f"lambda {format_commas(*part_names)}: {eq['lhs']}")
-            rhs = float(eval(eq["rhs"]))
-            equations.append({"lhs": lhs, "rhs": rhs})
+    components, equations = parse_config_file()
 
     min_err_square = 999999999
     start_time_s = time()
